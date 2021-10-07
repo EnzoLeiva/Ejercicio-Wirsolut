@@ -12,9 +12,9 @@ namespace Ejercicio_Wirsolut.Controllers
 {
     public class ClientesController : Controller
     {
-        private readonly ClienteDbContext _context;
+        private readonly ClienteContext _context;
 
-        public ClientesController(ClienteDbContext context)
+        public ClientesController(ClienteContext context)
         {
             _context = context;
         }
@@ -22,7 +22,7 @@ namespace Ejercicio_Wirsolut.Controllers
         // GET: Clientes
         public async Task<IActionResult> Index()
         {
-            return View(await _context.clientes.Where(x => x.IsDeleted == false).ToListAsync());
+            return View(await _context.Clientes.Where(x => x.IsDeleted == false).ToListAsync());
         }
 
         // GET: Search
@@ -34,7 +34,7 @@ namespace Ejercicio_Wirsolut.Controllers
         // GET: Results
         public async Task<IActionResult> ShowSearchResults(string nombre)
         {
-            return View("Index", await _context.clientes.Where(x => x.Nombre.Contains(nombre) && x.IsDeleted == false).ToListAsync());
+            return View("Index", await _context.Clientes.Where(x => x.Name.Contains(nombre) && x.IsDeleted == false).ToListAsync());
         }
 
         // GET: Clientes/Details/5
@@ -45,7 +45,7 @@ namespace Ejercicio_Wirsolut.Controllers
                 return NotFound();
             }
 
-            var cliente = await _context.clientes
+            var cliente = await _context.Clientes
                 .FirstOrDefaultAsync(m => m.ClienteID == id);
             if (cliente == null)
             {
@@ -64,7 +64,7 @@ namespace Ejercicio_Wirsolut.Controllers
         // POST: Clientes/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ClienteID,Nombre,Apellido,Email,DNI,Dirección,CodigoPostal,NumeroTelefono,IsDeleted")] Cliente cliente)
+        public async Task<IActionResult> Create([Bind("ClienteID,Name,Surname,Email,DNI,Direction,PostalCode,PhoneNumber,IsDeleted")] Cliente cliente)
         {
             if (ModelState.IsValid)
             {
@@ -83,7 +83,7 @@ namespace Ejercicio_Wirsolut.Controllers
                 return NotFound();
             }
 
-            var cliente = await _context.clientes.FindAsync(id);
+            var cliente = await _context.Clientes.FindAsync(id);
             if (cliente == null)
             {
                 return NotFound();
@@ -94,7 +94,7 @@ namespace Ejercicio_Wirsolut.Controllers
         // POST: Clientes/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ClienteID,Nombre,Apellido,Email,DNI,Dirección,CodigoPostal,NumeroTelefono,IsDeleted")] Cliente cliente)
+        public async Task<IActionResult> Edit(int id, [Bind("ClienteID,Name,Surname,Email,DNI,Direction,PostalCode,PhoneNumber,IsDeleted")] Cliente cliente)
         {
             if (id != cliente.ClienteID)
             {
@@ -132,7 +132,7 @@ namespace Ejercicio_Wirsolut.Controllers
                 return NotFound();
             }
 
-            var cliente = await _context.clientes
+            var cliente = await _context.Clientes
                 .FirstOrDefaultAsync(m => m.ClienteID == id);
             if (cliente == null)
             {
@@ -147,8 +147,8 @@ namespace Ejercicio_Wirsolut.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var cliente = await _context.clientes.FindAsync(id);
-            //_context.clientes.Remove(cliente);
+            var cliente = await _context.Clientes.FindAsync(id);
+            //_context.Clientes.Remove(cliente);
             cliente.IsDeleted = true;
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
@@ -156,7 +156,7 @@ namespace Ejercicio_Wirsolut.Controllers
 
         private bool ClienteExists(int id)
         {
-            return _context.clientes.Any(e => e.ClienteID == id);
+            return _context.Clientes.Any(e => e.ClienteID == id);
         }
     }
 }

@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace Ejercicio_Wirsolut.Data
 {
-    public class ClienteDbContext: DbContext
+    public class ClienteContext: DbContext
     {
-        public ClienteDbContext(DbContextOptions<ClienteDbContext> options): base(options)
+        public ClienteContext(DbContextOptions<ClienteContext> options): base(options)
         {
 
         }
-        public DbSet<Cliente> clientes { get; set; }
+        public DbSet<Cliente> Clientes { get; set; }
     }
 }

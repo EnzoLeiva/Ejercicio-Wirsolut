@@ -26,7 +26,7 @@ namespace Ejercicio_Wirsolut
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddDbContextPool<ClienteDbContext>(options =>
+            services.AddDbContextPool<ClienteContext>(options =>
             options.UseSqlServer(
                 Configuration.GetConnectionString("ClienteContext")));
         }

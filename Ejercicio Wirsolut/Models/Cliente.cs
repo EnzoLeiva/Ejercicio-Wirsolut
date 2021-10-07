@@ -13,11 +13,11 @@ namespace Ejercicio_Wirsolut.Models
 
         [Required(ErrorMessage = "El nombre es requerido")]
         [StringLength(30)]
-        public string Nombre { get; set; }
+        public string Name { get; set; }
 
         [Required(ErrorMessage = "El apellido es requerido")]
         [StringLength(30)]
-        public string Apellido { get; set; }
+        public string Surname { get; set; }
 
         [Required(ErrorMessage = "El email es requerido")]
         [StringLength(250)]
@@ -27,18 +27,17 @@ namespace Ejercicio_Wirsolut.Models
         public int DNI { get; set; }
 
         [Required(ErrorMessage = "La fecha de nacimiento es requerida")]
-        public DateTime FechaNacimiento { get; set; }
+        public DateTime DateOfBirth { get; set; }
 
         [Required(ErrorMessage = "La direccion es requerida")]
         [StringLength(250)]
-        public string Dirección { get; set; }
+        public string Direction { get; set; }
 
         [Required(ErrorMessage = "El codigo postal es requerido")]
-        [StringLength(20)]
-        public int CodigoPostal { get; set; }
+        public int PostalCode { get; set; }
 
         [Required(ErrorMessage = "El número de telefono es requerido")]
-        public int NumeroTelefono { get; set; }
+        public int PhoneNumber { get; set; }
 
         [DefaultValue(false)]
         public bool IsDeleted { get; set; }

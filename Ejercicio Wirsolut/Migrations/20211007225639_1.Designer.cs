@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Ejercicio_Wirsolut.Migrations
 {
-    [DbContext(typeof(ClienteDbContext))]
-    [Migration("20211007021123_1")]
+    [DbContext(typeof(ClienteContext))]
+    [Migration("20211007225639_1")]
     partial class _1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,18 +28,14 @@ namespace Ejercicio_Wirsolut.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Apellido")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
-
-                    b.Property<int>("CodigoPostal")
-                        .HasColumnType("int");
-
                     b.Property<int>("DNI")
                         .HasColumnType("int");
 
-                    b.Property<string>("Dirección")
+                    b.Property<DateTime>("DateOfBirth")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Direction")
+                        .IsRequired()
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 
@@ -48,23 +44,29 @@ namespace Ejercicio_Wirsolut.Migrations
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 
-                    b.Property<DateTime>("FechaNacimiento")
-                        .HasColumnType("datetime2");
-
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<string>("Nombre")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
-                    b.Property<int>("NumeroTelefono")
+                    b.Property<int>("PhoneNumber")
                         .HasColumnType("int");
+
+                    b.Property<int>("PostalCode")
+                        .HasMaxLength(20)
+                        .HasColumnType("int");
+
+                    b.Property<string>("Surname")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
 
                     b.HasKey("ClienteID");
 
-                    b.ToTable("clientes");
+                    b.ToTable("Clientes");
                 });
 #pragma warning restore 612, 618
         }
