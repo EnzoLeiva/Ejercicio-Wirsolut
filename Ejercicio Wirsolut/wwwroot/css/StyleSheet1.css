@@ -1,0 +1,25 @@
+﻿html{
+    height: 100%;
+}
+
+body {
+    background: url(../image/fondo-negro.jpg) repeat center center;
+}
+
+form {
+    color: #b3b300
+}
+
+h1, h2, h3, h4 {
+    color: #b3b300
+}
+
+a {
+    color: #99ccff
+}
+
+th, td, dl, thead {
+    color: #e6e6e6
+}
+
+
