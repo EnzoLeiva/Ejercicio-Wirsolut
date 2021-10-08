@@ -1,0 +1,12 @@
+﻿html {
+    height: 100%;
+}
+
+body {
+    background: url(../image/bg-masthead.jpg) repeat center center;
+}
+h1, p {
+    color: #14001a;
+    font-weight: 500;
+}
+
