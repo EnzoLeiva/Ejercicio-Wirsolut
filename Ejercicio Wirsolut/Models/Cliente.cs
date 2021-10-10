@@ -29,6 +29,7 @@ namespace Ejercicio_Wirsolut.Models
 
         [Required(ErrorMessage = "La fecha de nacimiento es requerida")]
         [Display(Name = "Date of birth")]
+        [DataType(DataType.DateTime)]
         public DateTime DateOfBirth { get; set; }
 
         [Required(ErrorMessage = "La direccion es requerida")]
