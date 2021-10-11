@@ -71,7 +71,7 @@ namespace Ejercicio_Wirsolut.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ClienteID,Name,Surname,Email,DNI,Direction,PostalCode,PhoneNumber,IsDeleted")] Cliente cliente)
         {
-            var email = _context.Clientes.FirstOrDefault(x => x.Email == cliente.Email);
+            var email = _context.Clientes.FirstOrDefault(x => x.Email == cliente.Email && x.IsDeleted == false);
             if (email != null)
             {
                 return BadRequest($"The client with mail {cliente.Email} already exists");
