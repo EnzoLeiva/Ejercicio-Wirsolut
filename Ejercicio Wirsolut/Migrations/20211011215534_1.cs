@@ -19,8 +19,8 @@ namespace Ejercicio_Wirsolut.Migrations
                     DNI = table.Column<int>(type: "int", nullable: false),
                     DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Direction = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
-                    PostalCode = table.Column<int>(type: "int", maxLength: 20, nullable: false),
-                    PhoneNumber = table.Column<int>(type: "int", nullable: false),
+                    PostalCode = table.Column<int>(type: "int", nullable: false),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>

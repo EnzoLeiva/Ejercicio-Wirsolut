@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Ejercicio_Wirsolut.Migrations
 {
     [DbContext(typeof(ClienteContext))]
-    [Migration("20211007225639_1")]
+    [Migration("20211011215534_1")]
     partial class _1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -52,11 +52,11 @@ namespace Ejercicio_Wirsolut.Migrations
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
-                    b.Property<int>("PhoneNumber")
-                        .HasColumnType("int");
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("PostalCode")
-                        .HasMaxLength(20)
                         .HasColumnType("int");
 
                     b.Property<string>("Surname")
