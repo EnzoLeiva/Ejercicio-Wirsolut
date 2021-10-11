@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ejercicio_Wirsolut.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -11,40 +12,42 @@ namespace Ejercicio_Wirsolut.Models
     {
         public int ClienteID { get; set; }
 
-        [Required(ErrorMessage = "El nombre es requerido")]
-        [StringLength(30)]
-        
+        [Required(ErrorMessage = "The name is required")]
+        [StringLength(30)]      
         public string Name { get; set; }
 
-        [Required(ErrorMessage = "El apellido es requerido")]
+        [Required(ErrorMessage = "The surname is required")]
         [StringLength(30)]
         public string Surname { get; set; }
 
-        [Required(ErrorMessage = "El email es requerido")]
+        [Required(ErrorMessage = "The email is required")]
         [StringLength(250)]
+        [EmailAddress]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "El DNI es requerido")]
+        [Required(ErrorMessage = "The DNI is required")]
         public int DNI { get; set; }
 
-        [Required(ErrorMessage = "La fecha de nacimiento es requerida")]
+        [Required(ErrorMessage = "The date of birth is required")]
         [Display(Name = "Date of birth")]
         [DataType(DataType.DateTime)]
         public DateTime DateOfBirth { get; set; }
 
-        [Required(ErrorMessage = "La direccion es requerida")]
+        [Required(ErrorMessage = "The direction is required")]
         [StringLength(250)]
         public string Direction { get; set; }
 
-        [Required(ErrorMessage = "El codigo postal es requerido")]
+        [Required(ErrorMessage = "The postal code is required")]
         [Display(Name = "Postal code")]
         public int PostalCode { get; set; }
 
-        [Required(ErrorMessage = "El número de telefono es requerido")]
+        [Required(ErrorMessage = "The phone number is required")]
         [Display(Name = "Phone number")]
-        public int PhoneNumber { get; set; }
+        [Phone]
+        public string PhoneNumber { get; set; }
 
         [DefaultValue(false)]
         public bool IsDeleted { get; set; }
     }
+
 }
