@@ -34,7 +34,12 @@ namespace Ejercicio_Wirsolut.Controllers
         // GET: Results
         public async Task<IActionResult> ShowSearchResults(string nombre)
         {
-            return View("Index", await _context.Clientes.Where(x => x.Name.Contains(nombre) && x.IsDeleted == false).ToListAsync());
+            var nombres = await _context.Clientes.Where(x => x.Name.Contains(nombre) && x.IsDeleted == false).ToListAsync();
+            if (nombres.Count == 0)
+            {
+                return new NotFoundObjectResult("ERROR: There is no client that contains the entered characters");
+            }
+            return View("Index", nombres);
         }
 
         // GET: Clientes/Details/5
@@ -66,6 +71,11 @@ namespace Ejercicio_Wirsolut.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ClienteID,Name,Surname,Email,DNI,Direction,PostalCode,PhoneNumber,IsDeleted")] Cliente cliente)
         {
+            var email = _context.Clientes.FirstOrDefault(x => x.Email == cliente.Email);
+            if (email != null)
+            {
+                return BadRequest($"The client with mail {cliente.Email} already exists");
+            }
             if (ModelState.IsValid)
             {
                 _context.Add(cliente);
